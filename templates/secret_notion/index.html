@@ -18,6 +18,9 @@
                             <div class="form-group">
                                 <label for="secret">Секретный ключ:</label>
                                 <input type="password" class="form-control" id="secret" name="secret_key" required>
+                                {% if hash %}
+                            	<p>Закодированная фраза: {{ hash }}</p>
+                                {% endif %} 
                             </div>
                         </div>
                         <button class="btn btn-success mr-3" id="create-note-btn">Создать заметку</button>
@@ -28,10 +31,16 @@
                         <div class="form-group">
                             <label for="hash">Хеш значение:</label>
                             <input type="text" class="form-control" id="hash" name="hash" required>
+                            
                         </div>
                         <div class="form-group">
                             <label for="secret">Секретная ключ:</label>
                             <input type="password" class="form-control" id="secret" name="secret_key" required>
+                            {% if un_hashed %}
+                            	<p>декодированная: {{ un_hashed.0.message }}</p>
+                                {% else %}
+                                <p class="text-danger">повторите попытку, что-то введено не верно</p>
+                            {% endif %} 
                         </div>
                             <div>
                                 <button class="btn btn-primary" id="view-notes-btn">Просмотреть заметку</button>
